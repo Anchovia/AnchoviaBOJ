@@ -1,16 +1,16 @@
 import sys
 
-def singleDataInput():
+def singleDataInputFunc():
     data = int(sys.stdin.readline().strip())
 
     return data
 
-def doubleDataInput():
+def doubleDataInputFunc():
     data1, data2 = map(int, sys.stdin.readline().rstrip().split())
 
     return data1, data2
 
-def dataListInput():
+def dataListInputFunc():
     dataList = list(map(int, sys.stdin.readline().rstrip().split()))
 
     return dataList
