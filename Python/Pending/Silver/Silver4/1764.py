@@ -53,6 +53,7 @@ def main():
         seeList.append(singleDataInputFunc())
 
     resultList = findResultFunc(hearList, seeList)
+    
     resultList.sort()
 
     print(len(resultList))
