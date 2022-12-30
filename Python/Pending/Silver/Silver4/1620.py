@@ -1,38 +1,43 @@
 import sys
 
-def searchIntData(pokemonList, data):
-    frontIdx = 0
-    lastIdx = len(pokemonList) - 1
-    midIdx = (lastIdx - frontIdx) // 2 + frontIdx
+def singleStrInput():
+    s = sys.stdin.readline().rstrip()
 
-    while(data != pokemonList[midIdx]):
-        if(data < pokemonList[midIdx]):
-            lastIdx = midIdx - 1
-        
-        elif(data > pokemonList[midIdx]):
-            frontIdx = midIdx + 1
+    return s
 
-        midIdx = (lastIdx - frontIdx) // 2 + frontIdx
+def doubleIntInput():
+    a, b = map(int, sys.stdin.readline().rstrip().split())
 
-    return midIdx + 1
+    return a, b
+
+def printList(l):
+    for i in l:
+        sys.stdout.write(i)
+        sys.stdout.write("\n")
 
 def main():
     pokemonList = []
+    resultList = []
 
-    amount, problem = map(int, sys.stdin.readline().rstrip().split())
+    pokemonList_app = pokemonList.append
+    resultList_app = resultList.append
+
+    amount, problem = doubleIntInput()
 
     for i in range(0, amount):
-        pokemonName = sys.stdin.readline().rstrip()
-        pokemonList.append(pokemonName)
+        pokemonName = singleStrInput()
+        pokemonList_app(pokemonName)
     
     for j in range(0, problem):
-        data = sys.stdin.readline().rstrip()
+        data = singleStrInput()
 
         if(data.isdigit()):
-            print(pokemonList[int(data) - 1])
+            resultList_app(pokemonList[int(data) - 1])
 
         else:
-            print(searchIntData(pokemonList, data))
+            resultList_app(str(pokemonList.index(data) + 1))
+    
+    printList(resultList)
 
 # __main__
 main()
