@@ -1,10 +1,15 @@
 import sys
 
-def main():
-    case = int(sys.stdin.readline())
+def singleDataInputFunc():
+    data = int(sys.stdin.readline().rstrip())
 
-    for i in range(case):
-        n = int(sys.stdin.readline())
+    return data
+
+def main():
+    testCase = singleDataInputFunc()
+
+    for i in range(testCase):
+        n = singleDataInputFunc()
 
 # __main__
 main()

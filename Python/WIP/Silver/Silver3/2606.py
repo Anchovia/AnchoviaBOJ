@@ -21,6 +21,9 @@ class Stack:
     
     def top(self):
         return self._data[-1]
+    
+    def sorter(self):
+        self._data.sort()
 
 def singleDataInputFunc():
     data = int(sys.stdin.readline().strip())
@@ -40,13 +43,13 @@ def findNetWork(linkList):
         judg = True
 
         for i in range(0, len(networkList)):
-            for nowData in nowList:
-                if(nowData in networkList[i]):
-                    networkList[i] = networkList[i] + nowList
-                    networkList[i] = set(networkList[i])
-                    networkList[i] = list(networkList[i])
-                    judg = False
-        
+            if(list(set(nowList) & set(networkList[i])) != []):
+                networkList[i] = networkList[i] + nowList
+                networkList[i] = set(networkList[i])
+                networkList[i] = list(networkList[i])
+                judg = False
+                break
+
         if(judg):
             networkList.append(nowList)
         
@@ -56,6 +59,8 @@ def findResult(networkList):
     for nowList in networkList:
         if(1 in nowList):
             return len(nowList) - 1
+    
+    return 0
                 
 def main():
     computerCase = singleDataInputFunc()
@@ -63,16 +68,22 @@ def main():
 
     if(groupCase == 0):
         print(0)
+
         return 0
+    
+    else:
+        linkList = Stack()
 
-    linkList = Stack()
+        for i in range(groupCase):
+            dataList = dataListInputFunc()
+            dataList.sort()
+            linkList.push(dataList)
 
-    for i in range(groupCase):
-        dataList = dataListInputFunc()
-        linkList.push(dataList)
+        linkList.sorter()
+        networkList = findNetWork(linkList)
 
-    networkList = findNetWork(linkList)
-    print(findResult(networkList))
+        print(networkList)
+        print(findResult(networkList))
 
 # __main__
 main()
