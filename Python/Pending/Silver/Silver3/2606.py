@@ -22,7 +22,7 @@ def findNetWork(linkList):
 
             for i in range(0, len(networkList)):
                 if(list(set(nowList) & set(networkList[i])) != []):
-                    networkList[i] = networkList[i] + nowList
+                    networkList[i] += nowList
                     networkList[i] = set(networkList[i])
                     networkList[i] = list(networkList[i])
 

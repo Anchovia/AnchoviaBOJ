@@ -1,5 +1,31 @@
 import sys
 
+class Stack:
+    def __init__(self):
+        self._data = []
+
+    def push(self, data):
+        self._data.append(data)
+
+    def pop(self):
+        return self._data.pop()
+
+    def size(self):
+        return len(self._data)
+
+    def empty(self):
+        if (len(self._data)) == 0:
+            return False
+
+        else:
+            return True
+    
+    def top(self):
+        return self._data[-1]
+
+    def print(self):
+        print(self._data)
+
 def singleDataInput():
     data = int(sys.stdin.readline().strip())
 
@@ -22,46 +48,45 @@ def trasferToData(dataList):
 
     return M, N, K
 
-def searchData(indexList, K):
-    count = 0
+def makeIndexListFunc():
+    indexList = Stack()
 
-    for i in range(K):
-        x = indexList[0][0]
-        y = indexList[0][1]
+    dataList = dataListInput()
+    M, N, K = trasferToData(dataList)
 
-        if [x + 1, y] in indexList:
-            indexList.pop(0)
-
-        elif [x - 1, y] in indexList:
-            indexList.pop(0)
-
-        elif [x, y + 1] in indexList:
-            indexList.pop(0)
-
-        elif [x, y - 1] in indexList:
-            indexList.pop(0)
-
-        else:
-            count += 1
-            indexList.pop(0)
+    for j in range(K):
+        x, y = doubleDataInput()
+        indexList.push([x, y])
     
-    return count
+    return indexList
+
+def BFSFunc(nowIdx, indexList):
+    removeList = []
+
+    x = nowIdx[0]
+    y = nowIdx[1]
+
+    return removeList
+
+
+def findWormFunc(indexList):
+    result = 0
+
+    while(indexList.empty()):
+        nowIdx = indexList.pop()
+
+        removeList = BFSFunc(nowIdx, indexList)
+
+    return result
 
 def __main__():
     testCase = singleDataInput()
 
     for i in range(testCase):
-        indexList = []
+        indexList = makeIndexListFunc()
 
-        dataList = dataListInput()
-        M, N, K = trasferToData(dataList)
+        result = findWormFunc(indexList)
 
-        for j in range(K):
-            x, y = doubleDataInput()
-            indexList.append([x, y])
-        
-        count = searchData(indexList, K)
-
-        print(count)
+        print(result)
 
 __main__()

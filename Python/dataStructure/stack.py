@@ -13,9 +13,13 @@ class Stack:
 
     def empty(self):
         if (len(self._data)) == 0:
-            return 1
+            return False
+
         else:
-            return 0
+            return True
     
     def top(self):
         return self._data[-1]
+
+    def print(self):
+        print(self._data)
