@@ -26,11 +26,6 @@ class Stack:
     def print(self):
         print(self._data)
 
-def singleDataInput():
-    data = int(sys.stdin.readline().strip())
-
-    return data
-
 def doubleDataInput():
     data1, data2 = map(int, sys.stdin.readline().rstrip().split())
 
@@ -60,14 +55,15 @@ def makeIndexListFunc():
     
     return indexList
 
-def BFSFunc(nowIdx, indexList):
+def BFSFunc(nowIdx, indexList, result):
     removeList = []
 
     x = nowIdx[0]
     y = nowIdx[1]
 
-    return removeList
-
+    result += 1
+    
+    return removeList, result
 
 def findWormFunc(indexList):
     result = 0
@@ -75,12 +71,12 @@ def findWormFunc(indexList):
     while(indexList.empty()):
         nowIdx = indexList.pop()
 
-        removeList = BFSFunc(nowIdx, indexList)
+        removeList, result = BFSFunc(nowIdx, indexList, result)
 
     return result
 
 def __main__():
-    testCase = singleDataInput()
+    testCase = int(sys.stdin.readline().strip())
 
     for i in range(testCase):
         indexList = makeIndexListFunc()
