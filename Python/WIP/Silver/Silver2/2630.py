@@ -1,56 +1,25 @@
 import sys
 
-def singleDataInputFunc():
-    data = int(sys.stdin.readline().rstrip())
+def dataListInputFunc(length):
+    dataList = list()
 
-    return data
-
-def dataListInputFunc():
-    dataList = list(map(int, sys.stdin.readline().rstrip().split()))
+    for _ in range(length):
+        lawDataList = sys.stdin.readline().rstrip().split()
+        dataList.append(lawDataList)
 
     return dataList
 
-def divideListFunc(dataList):
-    newList = []
-
-    for nowList in dataList:
-        newList.append(nowList[:len(nowList) // 2])
-        newList.append(nowList[len(nowList) // 2:])
-
-    return newList
-
-
-def findResult(idxList):
-    white = 0
-    blue = 0
-
-    judg = True
-
-    for x in range(0, len(idxList)):
-        if(judg):
-            break
-
-        for y in range(0, len(idxList[x])):
-            if(idxList[x][y] == 0):
-                judg = False
-                break
-
-
-
-    return white, blue
+def searchFunc(dataList):
+    pass
 
 def main():
-    n = singleDataInputFunc()
-    idxList = []
+    length = int(input())
 
-    for i in range(n):
-        dataList = dataListInputFunc()
-        idxList.append(dataList)
-    
-    white, blue = findResult(idxList)
+    dataList = dataListInputFunc(length)
 
-    print(white)
-    print(blue)
+    searchFunc(dataList)
+
+    print(dataList)
 
 # __main__
 main()

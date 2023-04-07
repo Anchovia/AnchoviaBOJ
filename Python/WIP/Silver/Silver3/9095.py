@@ -1,30 +1,14 @@
 import sys
 
-def singleDataInputFunc():
-    data = int(sys.stdin.readline().rstrip())
-
-    return data
-
-def findResult(n):
-    result = 0
-    nowData = n
-
-    while(nowData > 1):
-        if((nowData - 1) + (nowData - 1) == nowData):
-            pass
-
-        elif((nowData - 1) + (nowData - 2) == nowData):
-            pass
-
-
-    return result
+def solution(data):
+    pass
 
 def main():
-    testCase = singleDataInputFunc()
+    testCase = int(input())
 
-    for i in range(testCase):
-        n = singleDataInputFunc()
-        print(findResult(n))
+    for _ in range(testCase):
+        data = int(sys.stdin.readline())
+        solution(data)
 
 # __main__
 main()
