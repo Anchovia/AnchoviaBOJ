@@ -1,8 +1,8 @@
-def makeMatrix(n, m):
+def makeMatrix(m):
     matrixA = list()
     matrixB = list()
 
-    for _ in range(n):
+    for _ in range(m):
         data = list(map(int, input().split()))
         matrixA.append(data)
     
@@ -12,14 +12,14 @@ def makeMatrix(n, m):
 
     return matrixA, matrixB
 
-def sumMatrix(n, m, matrixA, matrixB):
+def sumMatrix(m, n, matrixA, matrixB):
     resultMatrix = list()
 
-    for i in range(n):
+    for x in range(m):
         newDataList = list()
 
-        for j in range(m):
-            newData = matrixA[i][j] + matrixB[i][j]
+        for y in range(n):
+            newData = matrixA[x][y] + matrixB[x][y]
 
             newDataList.append(newData)
         
@@ -32,10 +32,10 @@ def printMatrix(resultMatrix):
         print(' '.join(map(str, data)))
 
 def main():
-    n, m = map(int, input().split())
+    m, n = map(int, input().split())
 
-    matrixA, matrixB = makeMatrix(n, m)
-    resultMatrix = sumMatrix(n, m, matrixA, matrixB)
+    matrixA, matrixB = makeMatrix(m)
+    resultMatrix = sumMatrix(m, n, matrixA, matrixB)
 
     printMatrix(resultMatrix)
 
