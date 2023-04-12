@@ -1,73 +1,26 @@
 import sys
+from collections import deque
 
-def singleIntInput():
-    n = int(sys.stdin.readline().rstrip())
+# 전형적인 우선순위 큐처럼 데이터를 삽입, 삭제할 수 있는 자료 구조
+# 데이터를 삭제할 때 연산명령에 따라 우선순위가 가장 높은 데이터 또는
+# 가장 낮은 데이터 중 하나를 삭제함
+# 1. 데이터를 삽입하는 연산.
+# 2. 데이터를 삭제하는 연산.
+# -> 2-1. 우선순위가 가장 높은 것을 삭제하기 위한 것.
+# -> 2-2. 우선순위가 가장 낮은 것을 삭제하기 위한 것.
+# 정수만 저장하는 이중 우선순위 큐 Q
+# Q에 저장된 각 정수의 값 자체를 우선순위
+# Q에 적용될 일련의 연산이 주어질 때 이를 처리한 후
+# 최종적으로 Q에 저장된 데이터 중 최댓값과 최솟값을 출력하는 프로그램 작성
 
-    return n
+# 입력의 첫 번째 줄에는 입력 데이터의 수를 나타내는 정수 T
+# 각 테스트 데이터의 첫째 줄에는 Q에 적용할 연산의 개수를 나타내는 정수 k
+# 이어지는 k 줄 각각엔 연산을 나타내는 문자(‘D’ 또는 ‘I’)와 정수 n
 
-def dataInput():
-    data = sys.stdin.readline().rstrip()
+# ‘I n’은 정수 n을 Q에 삽입하는 연산
+# ‘D 1’는 Q에서 최댓값을 삭제하는 연산
+# ‘D -1’는 Q 에서 최솟값을 삭제하는 연산
+# 최댓값(최솟값)을 삭제하는 연산에서 최댓값(최솟값)이 둘 이상인 경우, 하나만 삭제됨
+# Q가 비어있는데 적용할 연산이 ‘D’라면 이 연산은 무시
 
-    if(data.find(' ') == -1):
-        a = data
-        b = 0
-    
-    else:
-        blankIndex = data.find(' ')
-
-        a = data[:blankIndex]
-        b = data[blankIndex + 1:]
-    
-    return a, int(b)
-
-def i(q, n):
-    q.append(n)
-
-    return q
-
-def d(q, n):
-    try:
-        if(n == 1):
-            q.remove(max(q))
-        
-        else:
-            q.remove(min(q))
-    
-    except ValueError:
-        pass
-
-    return q
-
-def judgCmd(q, cmd, n):
-    if(cmd == 'I'):
-        q = i(q, n)
-    
-    else:
-        q = d(q, n)
-
-    return q
-
-def main():
-    t = singleIntInput()
-    
-    for i in range(0, t):
-        q = []
-
-        k = singleIntInput()
-
-        for j in range(0, k):
-            cmd, n = dataInput()
-
-            q = judgCmd(q, cmd, n)
-    
-        if(len(q) == 0):
-            print('EMPTY')
-        
-        else:
-            maximum = max(q)
-            minimum = min(q)
-
-            print(maximum, minimum)
-
-# __main__
-main()
+# 각 테스트 데이터에 대해, 모든 연산을 처리한 후 Q에 남아 있는 값 중 최댓값과 최솟값을 출력
