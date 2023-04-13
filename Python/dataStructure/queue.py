@@ -2,12 +2,14 @@ from collections import deque
 
 queue = deque()
 
+# TEST
+
 queue.append(1)
-queue.append(2)
+queue.appendleft(2)
 queue.append(3)
 queue.append(4)
-queue.append(5)
-queue.append(6)
+queue.appendleft(5)
+queue.appendleft(6)
 
 queue.pop()
 queue.popleft()
