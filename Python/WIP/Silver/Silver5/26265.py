@@ -1,14 +1,29 @@
+import sys
+
 def main():
-    dataList = list()
+    dataDict = dict()
+    mentoList = list()
 
-    i = int(input())
+    case = int(input())
 
-    for _ in range(i):
-        data = list(input().split())
-        dataList.append(data)
+    for _ in range(case):
+        mento, mentee = list(sys.stdin.readline().rstrip().split())
 
-    dataList.sort()
+        if mento in dataDict:
+            dataDict[mento].append(mentee)
+        else:
+            dataDict[mento] = [mentee]
+            mentoList.append(mento)
 
-    print(dataList)
+    mentoList.sort()
+
+    for key, value in dataDict.items():
+        dataDict[key] = sorted(value, reverse=True)
+
+    for nowMento in mentoList:
+        nowMenteeList = dataDict[nowMento]
+
+        for nowMenTee in nowMenteeList:
+            print(f"{nowMento} {nowMenTee}")
 
 main()

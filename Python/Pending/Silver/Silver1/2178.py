@@ -1,4 +1,3 @@
-import copy
 from collections import deque
 
 def makeMatrix(height, width):
@@ -36,7 +35,7 @@ def solution(matrixList, indexList, height, width):
     while queue:
         cnt = count
         count = 0
-        
+
         for _ in range(cnt):
             nowData = queue.popleft()
         
@@ -55,7 +54,6 @@ def solution(matrixList, indexList, height, width):
                 else:
                     if matrixList[nowY][nowX] == "1" and not visited[(nowY, nowX)]\
                             and [nowY, nowX] not in queue:
-
                         queue.append([nowY, nowX])
                         count += 1
             

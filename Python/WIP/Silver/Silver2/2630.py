@@ -1,25 +1,46 @@
 import sys
 
-def dataListInputFunc(length):
-    dataList = list()
+def makeMatrix(size):
+    matrixList = []
+    newList = list()
 
-    for _ in range(length):
-        lawDataList = sys.stdin.readline().rstrip().split()
-        dataList.append(lawDataList)
+    for _ in range(size):
+        data = sys.stdin.readline().rstrip().split(" ")
 
-    return dataList
+        newList.append(data)
 
-def searchFunc(dataList):
-    pass
+    matrixList.append(newList)
+
+    return matrixList
+
+def solution(matrixList, size):
+    resultList = list()
+    newList = list()
+
+    x, y = 0, 0
+
+    while x < size and y < size:
+        for nowList in matrixList:
+            temp = nowList[0][0]
+
+            for y in range(size):
+                for x in range(1, size):
+                    nowData = nowList[y][x]
+
+                    if nowData != temp:
+                        size //= 2
+
+                    temp = nowData
+
+    return resultList
+
 
 def main():
-    length = int(input())
+    size = int(input())
 
-    dataList = dataListInputFunc(length)
+    matrixList = makeMatrix(size)
 
-    searchFunc(dataList)
-
-    print(dataList)
+    resultList = solution(matrixList, size)
 
 # __main__
 main()
