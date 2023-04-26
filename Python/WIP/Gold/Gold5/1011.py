@@ -1,38 +1,13 @@
-import sys
+def solution(nowPosition, targetPosition):
+    length = targetPosition - nowPosition
 
-def searchLength(x, y):
-    length = y - x
-
-    if(length == 1):
-        return 1
-    
-    elif(length == 2):
-        return 2
-    
-    else:
-        result = 2
-
-        leftLength = length - 2
-
-        i = 1
-
-        while True:
-            if(leftLength < 1):
-                break
-
-        return result
-
+    now = 0
 
 def main():
-    resultList = []
+    testCase = int(input())
 
-    case = int(sys.stdin.readline().rstrip())
+    nowPosition, targetPosition = map(int, input().split())
 
-    for i in range(0, case):
-        x, y = map(int, sys.stdin.readline().rstrip())
+    solution(nowPosition, targetPosition)
 
-        result = searchLength(x, y)
-        resultList.append(result)
-
-    for j in resultList:
-        print(j)
+main()
