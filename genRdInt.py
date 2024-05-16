@@ -8,7 +8,6 @@ def isSame(numberStack):
             count += 1
     if count > 1:
         return True
-    
     return False
 
 def isContinuous(sortedStack):
@@ -17,7 +16,6 @@ def isContinuous(sortedStack):
     for nowData in sortedStack:
         if count >= 3:
             return True
-        
         if new:
             pastData = nowData
             new = False
@@ -25,13 +23,11 @@ def isContinuous(sortedStack):
             if nowData == pastData + 1:
                 count += 1
                 pastData = nowData
-
     return False
 
 def isGroup(sortedStack):
     boundary = [8, 15, 22, 29, 36, 43]
     group = [0 for _ in range(len(boundary) + 1)]
-
     for nowData in sortedStack:
         for i, nowBound in enumerate(boundary):
             if nowData < nowBound:
@@ -39,24 +35,19 @@ def isGroup(sortedStack):
                 break
         else:
             group[-1] += 1
-    
     for nowGroupData in group:
         if nowGroupData >= 4:
             return True
-        
     return False
 
 def judgFunc(numberStack):
     if isSame(numberStack):
         return False
-    
     sortedStack = sorted(numberStack)
     if isContinuous(sortedStack):
         return False
-    
     if isGroup(sortedStack):
         return False
-        
     return True
 
 def genData():
