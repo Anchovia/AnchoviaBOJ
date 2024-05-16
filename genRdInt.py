@@ -8,6 +8,8 @@ def isSame(numberStack):
             count += 1
     if count > 1:
         return True
+    
+    return False
 
 def isContinuous(sortedStack):
     new = True
@@ -23,6 +25,7 @@ def isContinuous(sortedStack):
             if nowData == pastData + 1:
                 count += 1
                 pastData = nowData
+
     return False
 
 def isGroup(sortedStack):
@@ -40,6 +43,8 @@ def isGroup(sortedStack):
     for nowGroupData in group:
         if nowGroupData >= 4:
             return True
+        
+    return False
 
 def judgFunc(numberStack):
     if isSame(numberStack):
