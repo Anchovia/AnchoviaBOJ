@@ -10,19 +10,19 @@ def isSame(numberStack):
         return True
 
 def isContinuous(sortedStack):
-    run = 0
+    new = True
     count = 0
     for nowData in sortedStack:
         if count >= 3:
             return True
         
-        if run == 0:
+        if new:
             pastData = nowData
+            new = False
         else:
             if nowData == pastData + 1:
                 count += 1
                 pastData = nowData
-        run += 1
     return False
 
 def isGroup(sortedStack):
@@ -45,7 +45,7 @@ def judgFunc(numberStack):
     if isSame(numberStack):
         return False
     
-    sortedStack = numberStack
+    sortedStack = sorted(numberStack)
     if isContinuous(sortedStack):
         return False
     
