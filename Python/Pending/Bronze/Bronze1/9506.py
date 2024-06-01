@@ -8,14 +8,18 @@ def solution(number):
             sum += i
             strList += f' {i} +'
     if number == sum:
-        return strList
+        return strList[:(len(strList) - 2)]
     else:
         return f"{number} is NOT perfect."
             
 
 def main():
-    number = int(sys.stdin.readline())
-    strs = solution(number)
-    print(strs)
+    while True:
+        number = int(sys.stdin.readline())
+        if number == -1:
+            break
+        else:
+            strs = solution(number)
+            print(strs)
 
 main()
